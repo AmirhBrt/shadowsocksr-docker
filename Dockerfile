@@ -20,8 +20,8 @@ RUN wget -qO- --no-check-certificate https://github.com/shadowsocksr-backup/shad
 
 WORKDIR /shadowsocksr-${BRANCH}/shadowsocks
 
-COPY config.json . 
+COPY config.json .config.json
 
-RUN envsubst < config.json > config.json
+RUN envsubst < .config.json > config.json
 
-CMD tail -f /dev/null
+CMD python server.py -c config.json

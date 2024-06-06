@@ -11,5 +11,7 @@ services:
       # - PROTOCOL=origin
       # - OBFS=http_simple
     ports:
+      # format: <host_port>:<container_port>
+      # Just change the host_port to the port you want to use
       - "4300:8388"
     restart: unless-stopped
