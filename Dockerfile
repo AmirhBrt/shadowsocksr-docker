@@ -18,9 +18,7 @@ RUN apk --no-cache add python \
 RUN mkdir -p $WORK && \
     wget -qO- --no-check-certificate https://github.com/shadowsocksr-backup/shadowsocksr/archive/$BRANCH.tar.gz | tar -xzf - -C ${WORK}
 
-WORKDIR ${WORK}
-
-RUN ls -a
+WORKDIR ${WORK}/shadowsocks
 
 EXPOSE $SERVER_PORT
-CMD python shadowsocks/server.py -p $SERVER_PORT -k $PASSWORD -m $METHOD -O $PROTOCOL -o $OBFS 
+CMD python server.py -p $SERVER_PORT -k $PASSWORD -m $METHOD -O $PROTOCOL -o $OBFS 
