@@ -18,10 +18,10 @@ RUN apk --no-cache add python \
 
 RUN wget -qO- --no-check-certificate https://github.com/shadowsocksr-backup/shadowsocksr/archive/$BRANCH.tar.gz | tar -xzf - -C .
 
-COPY config.json . 
-
-RUN envsubst < config.json > /config.json
-
 WORKDIR /shadowsocksr-${BRANCH}/shadowsocks
 
-CMD python server.py -c /config.json
+COPY config.json . 
+
+RUN envsubst < config.json > config.json
+
+CMD python server.py -c config.json
