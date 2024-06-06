@@ -23,4 +23,4 @@ WORKDIR ${WORK}/shadowsocks
 RUN echo | ls -a
 
 EXPOSE $SERVER_PORT
-CMD python server.py -p $SERVER_PORT -k $PASSWORD -m $METHOD -O $PROTOCOL -o $OBFS 
+CMD tail -f /dev/null
