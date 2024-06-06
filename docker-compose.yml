@@ -1,6 +1,8 @@
 services:
   ssr:
-    image: breakwa11/shadowsocksr
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
     container_name: ssr
     environment:
       - PASSWORD=password
