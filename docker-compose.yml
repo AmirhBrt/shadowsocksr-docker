@@ -6,7 +6,6 @@ services:
     container_name: ssr
     environment:
       - PASSWORD=password
-      - SERVER_PORT=8388
       # - METHOD=chacha20
       # - PROTOCOL=origin
       # - OBFS=http_simple
