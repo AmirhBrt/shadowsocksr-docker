@@ -12,4 +12,4 @@ services:
       # - OBFS=http_simple
     ports:
       - "4300:8388"
-    restart: 5
+    restart: unless-stopped
