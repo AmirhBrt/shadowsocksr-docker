@@ -22,6 +22,7 @@ COPY config.json ${WORK}/config.json
 
 WORKDIR ${WORK}
 
+RUN ls -a
 
 EXPOSE $SERVER_PORT
-CMD python ./shadowsocks/server.py -p $SERVER_PORT -k $PASSWORD -m $METHOD -O $PROTOCOL -o $OBFS 
+CMD python shadowsocks/server.py -p $SERVER_PORT -k $PASSWORD -m $METHOD -O $PROTOCOL -o $OBFS 
