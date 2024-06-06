@@ -24,5 +24,4 @@ WORKDIR ${WORK}
 
 
 EXPOSE $SERVER_PORT
-CMD envsubst < config.json > config.json && \
-    python ./shadowsocks/server.py -p $SERVER_PORT -k $PASSWORD -m $METHOD -O $PROTOCOL -o $OBFS 
+CMD python ./shadowsocks/server.py -p $SERVER_PORT -k $PASSWORD -m $METHOD -O $PROTOCOL -o $OBFS 
