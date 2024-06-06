@@ -7,7 +7,6 @@ ENV PROTOCOL        origin
 ENV OBFS            http_simple
 
 ARG BRANCH=manyuser
-ARG WORK=~
 
 
 RUN apk --no-cache add python \
@@ -16,11 +15,12 @@ RUN apk --no-cache add python \
 
 
 RUN mkdir -p $WORK && \
-    wget -qO- --no-check-certificate https://github.com/shadowsocksr/shadowsocksr/archive/$BRANCH.tar.gz | tar -xzf - -C $WORK
+    wget -qO- --no-check-certificate https://github.com/shadowsocksr/shadowsocksr/archive/$BRANCH.tar.gz | tar -xzf 
 
+COPY config.json /shadowsocksr-$BRANCH/config.json
 
-WORKDIR $WORK/shadowsocksr-$BRANCH/shadowsocks
-
+WORKDIR /shadowsocksr-$BRANCH
 
 EXPOSE $SERVER_PORT
-CMD python server.py -p $SERVER_PORT -k $PASSWORD -m $METHOD -O $PROTOCOL -o $OBFS 
+CMD envsubst < config.json > config.json && \
+    python ./shadowsocks/server.py -p $SERVER_PORT -k $PASSWORD -m $METHOD -O $PROTOCOL -o $OBFS 
