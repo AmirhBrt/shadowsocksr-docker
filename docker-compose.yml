@@ -3,11 +3,11 @@ services:
     image: breakwa11/shadowsocksr
     container_name: ssr
     environment:
-      - PASSWORD=@Abcami6082
-      - SERVER_PORT=${SERVER_PORT}
+      - PASSWORD=password
+      - SERVER_PORT=8388
       # - METHOD=chacha20
       # - PROTOCOL=origin
       # - OBFS=http_simple
     ports:
-      - "4300:${SERVER_PORT}"
+      - "4300:8388"
     restart: always
