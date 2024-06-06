@@ -22,6 +22,5 @@ WORKDIR /shadowsocksr-${BRANCH}/shadowsocks
 
 COPY config.json .config.json
 
-RUN envsubst < .config.json > config.json
-
-CMD python server.py -c config.json
+CMD envsubst < .config.json > config.json && \
+    python server.py -c config.json
