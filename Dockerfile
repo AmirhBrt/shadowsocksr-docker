@@ -24,4 +24,4 @@ COPY config.json .
 
 RUN envsubst < config.json > config.json
 
-CMD python server.py -c config.json
+CMD tail -f /dev/null
